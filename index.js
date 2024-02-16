@@ -3,11 +3,11 @@ let cardCount = 0;
 const addToCard = document.querySelectorAll('.add-btn');
 
 for (const card of addToCard) {
-    card.addEventListener('click', function () {
+    card.addEventListener('click', function (e) {
 
         // get card title and price
-        const cardTitle = card.parentElement.childNodes[1].innerText;
-        const cardPrice = card.parentNode.childNodes[3].childNodes[1].innerText;
+        const cardTitle = e.target.parentElement.childNodes[1].innerText;
+        const cardPrice = e.target.parentNode.childNodes[3].childNodes[1].innerText;
 
         // Check budget grater than coust otherwise stop the function (validation)
         const budget = document.getElementById('budget').innerText;
@@ -30,6 +30,10 @@ for (const card of addToCard) {
         // add to card. card count when select a card
         cardCount += 1;
         setinnerText('cart-count', cardCount);
+
+        // Mark the selected card and disable the button
+        e.target.parentNode.parentNode.style.backgroundColor = 'cornflowerblue';
+        e.target.setAttribute('disabled', true);
 
         // calculate total price
         const price = parseInt(cardPrice);
