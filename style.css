@@ -141,3 +141,7 @@ li{
     margin: auto;
     
 }
+
+button{
+    cursor: pointer;
+}
